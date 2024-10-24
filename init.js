@@ -1,4 +1,4 @@
-const {TargetAccountFilePath, AccountCount} = require('./config');
+const {TargetAccountFilePath, GenerateAccountCount} = require('./config');
 
 const fs = require('fs');
 const {mnemonicGenerate} = require('@polkadot/util-crypto');
@@ -8,7 +8,7 @@ function generateAccountIfAbsent() {
     const mnemonicsFilePath = TargetAccountFilePath;
 
     if (!fs.existsSync(mnemonicsFilePath)) {
-        for (let i = 0; i < AccountCount; i++) {
+        for (let i = 0; i < GenerateAccountCount; i++) {
             const mnemonic = mnemonicGenerate();
             mnemonicList.push(mnemonic);
         }

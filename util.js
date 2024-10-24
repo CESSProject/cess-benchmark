@@ -1,6 +1,6 @@
 const fs = require('fs');
 const {Keyring} = require('@polkadot/keyring');
-let {ConcurrencyCount} = require("./config");
+let {RequestCount} = require("./config");
 
 const keyring = new Keyring({type: 'sr25519'});
 
@@ -21,7 +21,7 @@ function validateMnemonic(mnemonic) {
 async function getAccountsFromMnemonics(filePath) {
     let accounts = [];
     let mnemonics = fs.readFileSync(filePath, 'utf-8').split('\n').filter(Boolean);
-    let slice = ConcurrencyCount < mnemonics.length ? ConcurrencyCount : mnemonics.length;
+    let slice = RequestCount < mnemonics.length ? RequestCount : mnemonics.length;
     for (let i = 0; i < slice; i++) {
         validateMnemonic(mnemonics[i]);
         let account = keyring.addFromMnemonic(mnemonics[i]);
