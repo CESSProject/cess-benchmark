@@ -8,7 +8,7 @@ CESS Chain TPS Testing: **The threshold of the number of transactions per second
 
 2: install `Node.js 18` and then execute command: `npm install`
 
-3: set `SourceAccountMnemonic` and `RequestCount` in `config.js`
+3: set `ChainURL`, `SourceAccountMnemonic`, `GenerateAccountCount` and `RequestCount` in `config.js`
 
 4: execute command to generate target accounts: `node init.js`
 
@@ -17,5 +17,5 @@ CESS Chain TPS Testing: **The threshold of the number of transactions per second
 ![img.png](public/img.png)
 
 # Conclusion
-This general test shows that a single CESS blockchain can achieve over **500** TPS (3092 transactions, one block every 6 seconds) for balance transfer transactions. If the Performance benchmark is used, it will exceed **1000** TPS.
+This general test shows that a single CESS blockchain can achieve over **635** TPS (3812 transactions, one block every 6 seconds) for balance transfer transactions. If the Performance benchmark is used, it will exceed **1000** TPS.
 This is enough to meet the current needs of CESS's distributed storage. If demand surges in the future, CESS can run over 100 parachains; the projected TPS is well over **100,000**. 
