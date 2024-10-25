@@ -1,4 +1,4 @@
-# cess-tps
+# CESS TPS Testing
 
 CESS Chain TPS Testing: **The threshold of the number of transactions per second.**
 
@@ -14,7 +14,8 @@ CESS Chain TPS Testing: **The threshold of the number of transactions per second
 
 5: execute command to run testing: `node main.js`
 
-
-**A block may be opened every 6 seconds on the Bitcoin blockchain, The current blockchain tps limit is about 500**
-
 ![img.png](public/img.png)
+
+# Conclusion
+This general test shows that a single CESS blockchain can achieve over **500** TPS (3092 transactions, one block every 6 seconds) for balance transfer transactions. If the Performance benchmark is used, it will exceed **1000** TPS.
+This is enough to meet the current needs of CESS's distributed storage. If demand surges in the future, CESS can run over 100 parachains; the projected TPS is well over **100,000**. 
