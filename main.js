@@ -1,8 +1,8 @@
-const {ChainURL, SourceAccountMnemonic, TransferAmount, TargetAccountFilePath} = require('./config');
+const {ChainURL, SourceAccountMnemonic, TransferAmount, TargetAccountFilePath, RequestCount} = require('./config');
 const {ApiPromise, WsProvider} = require('@polkadot/api');
 const {Keyring} = require('@polkadot/keyring');
 const {cryptoWaitReady} = require('@polkadot/util-crypto');
-const {getAccountsFromMnemonics} = require("./util");
+const fs = require("fs");
 
 
 async function singleTransfer(api, paymentAccount, targetAccount, amount, nonce) {
@@ -56,7 +56,7 @@ async function transfer(targetAccounts, amount) {
 
 async function main() {
     await cryptoWaitReady();
-    const targetAccounts = await getAccountsFromMnemonics(TargetAccountFilePath);
+    let targetAccounts = fs.readFileSync(TargetAccountFilePath, 'utf-8').split('\n').filter(Boolean).slice(0, RequestCount);
     await transfer(targetAccounts, TransferAmount).catch(console.error);
 }
 

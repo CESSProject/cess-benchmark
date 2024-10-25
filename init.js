@@ -1,20 +1,19 @@
-const {TargetAccountFilePath, GenerateAccountCount} = require('./config');
+const {MnemonicAccountFilePath, TargetAccountFilePath, GenerateAccountCount} = require('./config');
 
 const fs = require('fs');
-const {mnemonicGenerate} = require('@polkadot/util-crypto');
+const {mnemonicGenerate, cryptoWaitReady} = require('@polkadot/util-crypto');
+const {getAccountsFromMnemonics} = require("./util");
 
-function generateAccountIfAbsent() {
+async function generateAccountIfAbsent() {
     const mnemonicList = [];
-    const mnemonicsFilePath = TargetAccountFilePath;
-
-    if (!fs.existsSync(mnemonicsFilePath)) {
+    if (!fs.existsSync(MnemonicAccountFilePath)) {
         for (let i = 0; i < GenerateAccountCount; i++) {
             const mnemonic = mnemonicGenerate();
             mnemonicList.push(mnemonic);
         }
         try {
             fs.writeFileSync(
-                mnemonicsFilePath,
+                MnemonicAccountFilePath,
                 mnemonicList.join('\n') + '\n',
                 'utf-8'
             );
@@ -24,6 +23,21 @@ function generateAccountIfAbsent() {
             throw error;
         }
     }
+    if (!fs.existsSync(TargetAccountFilePath)) {
+        await cryptoWaitReady();
+        let targetAccounts = await getAccountsFromMnemonics(MnemonicAccountFilePath);
+        try {
+            fs.writeFileSync(
+                TargetAccountFilePath,
+                targetAccounts.join('\n') + '\n',
+                'utf-8'
+            );
+            console.log('save account success');
+        } catch (error) {
+            console.error('save account error:', error);
+            throw error;
+        }
+    }
 }
 
-generateAccountIfAbsent()
+generateAccountIfAbsent().then()
