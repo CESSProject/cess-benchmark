@@ -57,7 +57,8 @@ We conducted the test under two different settings:
 
 A video demonstrating the test process has been recorded.
 
-![CESS DeOSS Test Video](https://youtu.be/-V7rzxBxVTc)
+[![asciicast](https://github.com/user-attachments/assets/d51c1a22-0dee-48fb-9b82-e6e588389cc1)](https://youtu.be/-V7rzxBxVTc)
+
 
 ## Conclusion
 
