@@ -56,9 +56,8 @@ We conducted the test under two different settings:
 ## Test Video
 
 A video demonstrating the test process has been recorded.
-To include the video in your GitHub repository, follow these steps:
 
-![CESS DeOSS Test Video](./CESSDeOSSUploadDownloadTest.mp4)
+![CESS DeOSS Test Video](https://youtu.be/-V7rzxBxVTc)
 
 ## Conclusion
 
